@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from 'express';
-import { CreateUserDto } from '@dtos/users.dto';
 import { Room } from '@interfaces/rooms.interface';
 import roomService from '@services/rooms.service';
 
