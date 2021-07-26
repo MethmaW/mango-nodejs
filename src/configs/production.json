@@ -1,0 +1,17 @@
+{
+    "env": "production",
+ 	"dbLocalConfig": {
+		"host": "localhost",
+		"database": "mongoose",
+		"port": 27017
+	},
+    "secretKey": "secretKey",
+    "log": {
+        "format": "combined",
+        "dir": "../logs"
+    },
+    "cors": {
+        "origin": "your.domain.com",
+        "credentials": true
+    }
+}
