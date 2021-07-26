@@ -9,6 +9,7 @@ import RoomsRoute from './routes/rooms.route';
 import validateEnv from '@utils/validateEnv';
 
 import roomModel from '@models/rooms.model'
+import paymentMethodModel from "@models/payment-methods.model"
 
 validateEnv();
 
@@ -41,6 +42,11 @@ const createRoom = async () => {
     console.log("vhhg", createUserData);
     
 }
+
+const createPaymentMethod = async () => {
+    const createUserData = await paymentMethodModel.create([{ name: "credit card online" }, { name: "credit card at the location" }, { name: "cash payments at the location" }])
+}
+
 
 
 
