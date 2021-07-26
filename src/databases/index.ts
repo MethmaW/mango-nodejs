@@ -12,11 +12,13 @@ const dbname: string = process.env.ATLAS_NAME
 const localurl: string = `mongodb://${host}:${port}/${database}`
 const atlasurl: string = `mongodb+srv://${dbusername}:${dbuserpassword}@${dbcluster}.mongodb.net/${dbname}`
 
-const dbenv: string = process.env.NODE_ENV || 'development';
+const dbenv: string = process.env.NODE_ENV;
 
 export const dbConnection = {
-  url: dbenv === 'production' ? atlasurl : localurl,
+  //TODO: Add the local db in development env
+  url: atlasurl,
   options: {
+    useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
