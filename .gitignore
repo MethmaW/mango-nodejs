@@ -112,4 +112,4 @@ dist
 .DS_Store
 
 #configs
-src/configs
+src/configs/
