@@ -15,7 +15,6 @@ const atlasurl: string = `mongodb+srv://${dbusername}:${dbuserpassword}@${dbclus
 const dbenv: string = process.env.NODE_ENV;
 
 export const dbConnection = {
-  //TODO: Add the local db in development env
   url: atlasurl,
   options: {
     useCreateIndex: true,

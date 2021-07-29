@@ -27,17 +27,14 @@ const bookingSchema: Schema = new Schema({
         type: Date,
         default: Date.now
     },
-    //TODO: Assumption: parkingSpot is optional
     parkingSpot: {
         type: Boolean,
         required: false
     },
-    //TODO: Assumption: plannedArrivalTime is optional
     plannedArrivalTime: {
         type: String,
         required: false
     },
-    //TODO: Assumption: notes is optional
     notes: {
         type: String,
         required: false
