@@ -11,5 +11,4 @@ export interface Room {
     rates: Rate[]
     defaultCheckin: number;
     defaultCheckout: number;
-    availability: boolean;
 }

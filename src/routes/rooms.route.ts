@@ -12,7 +12,7 @@ class RoomsRoute implements Routes {
     }
 
     private initializeRoutes() {
-        this.router.get(`${this.path}`, this.roomsController.getRooms);
+        this.router.post(`${this.path}`, this.roomsController.getRooms);
     }
 }
 

@@ -1,5 +1,6 @@
 import { model, Schema, Document } from 'mongoose';
 import { Room } from '@interfaces/rooms.interface';
+import propertyModel from '@/models/properties.model';
 
 const rateSchema = new Schema({
     _id: false,
@@ -16,7 +17,7 @@ const rateSchema = new Schema({
 const roomSchema: Schema = new Schema({
     propertyId: {
         type: Schema.Types.ObjectId,
-        ref: "Property",
+        ref: propertyModel,
         required: true
     },
     occupancy: {
@@ -35,10 +36,6 @@ const roomSchema: Schema = new Schema({
         type: Number,
         required: true,
     },
-    availability: {
-        type: Boolean,
-        required: true
-    }
 });
 
 const roomModel = model<Room & Document>('Room', roomSchema);

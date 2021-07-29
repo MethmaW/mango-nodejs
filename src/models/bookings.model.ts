@@ -20,16 +20,16 @@ const bookingSchema: Schema = new Schema({
     },
     bookedTime: {
         type: Date,
-        required: true
+        default: Date.now
     },
     paymentMethodId: {
         type: String,
         required: true
     },
-    //TODO: Assumption: selecting if a parking spot is needed - required
+    //TODO: Assumption: parkingSpot is optional
     parkingSpot: {
         type: Boolean,
-        required: true
+        required: false
     },
     //TODO: Assumption: requiredAmenities is optional
     requiredAmenities: [{

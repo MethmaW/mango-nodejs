@@ -6,10 +6,13 @@ class RoomsController {
     public roomService = new roomService();
 
     public getRooms = async (req: Request, res: Response, next: NextFunction) => {
+        const { selectedCheckin, selectedCheckout } = req.body
+        
         try {
-            const findAllRoomsData: Room[] = await this.roomService.findAllRoom();
+            const findAllRoomsData: Room[] = await this.roomService.findAllRoom(selectedCheckin, selectedCheckout);
+      
 
-            res.status(200).json({ data: findAllRoomsData, message: 'findAll' });
+            res.status(200).json({ data: findAllRoomsData, message: 'GET Available- Rooms' });
         } catch (error) {
             next(error);
         }
