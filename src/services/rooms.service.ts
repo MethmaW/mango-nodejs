@@ -93,7 +93,7 @@ class RoomService {
     private getAvailableRoomsList(allRooms, bookedRooms: string[]): Room[] {
 
         let availableRooms = allRooms.filter
-            (room => !bookedRooms.filter(bookedRoom => bookedRoom.toString() === room._id.toString()));
+            (room => !bookedRooms.filter(bookedRoom => bookedRoom.toString() === room._id.toString()).length);
         
         return availableRooms;
         
