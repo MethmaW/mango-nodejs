@@ -11,7 +11,7 @@ import { isEmpty } from '@utils/util';
 class AuthService {
   public users = userModel;
 
-  public async signup(userData: NewUserDto): Promise<User> {
+  public async signup(userData: NewUserDto): Promise<{ cookie: string; createUserData: User }> {
     if (isEmpty(userData)) throw new HttpException(400, "You're not userData");
 
     const findUser: User = await this.users.findOne({ email: userData.email });
@@ -20,7 +20,10 @@ class AuthService {
     const hashedPassword = await bcrypt.hash(userData.password, 10);
     const createUserData: User = await this.users.create({ ...userData, password: hashedPassword });
 
-    return createUserData;
+    const tokenData = this.createToken(createUserData);
+    const cookie = this.createCookie(tokenData);
+
+    return {cookie, createUserData};
   }
 
   public async login(userData: CreateUserDto): Promise<{ cookie: string; findUser: User }> {
@@ -49,7 +52,7 @@ class AuthService {
 
   public createToken(user: User): TokenData {
     const dataStoredInToken: DataStoredInToken = { _id: user._id };
-    const secretKey: string = config.get('secretKey');
+    const secretKey: string = process.env.SECRET_KEY;
     const expiresIn: number = 60 * 60;
 
     return { expiresIn, token: jwt.sign(dataStoredInToken, secretKey, { expiresIn }) };

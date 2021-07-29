@@ -1,0 +1,16 @@
+{
+    "env": "production",
+ 	"dbLocalConfig": {
+		"host": "localhost",
+		"database": "mongoose",
+		"port": 27017
+	},
+    "log": {
+        "format": "combined",
+        "dir": "../logs"
+    },
+    "cors": {
+        "origin": "your.domain.com",
+        "credentials": true
+    }
+}

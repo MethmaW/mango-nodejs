@@ -10,9 +10,10 @@ class AuthController {
   public signUp = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const userData: NewUserDto = req.body;
-      const signUpUserData: User = await this.authService.signup(userData);
+      const { cookie, createUserData} = await this.authService.signup(userData);
 
-      res.status(201).json({ data: signUpUserData, message: 'signup' });
+      res.setHeader('Set-Cookie', [cookie]);
+      res.status(201).json({ data: createUserData, message: 'signup' });
     } catch (error) {
       next(error);
     }
