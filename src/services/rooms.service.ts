@@ -9,6 +9,8 @@ class RoomService {
 
     public async findAllRoom(selectedCheckin, selectedCheckout): Promise<Room[]> {
 
+        
+
         const userCheckin: string = this.convertDateFormat(selectedCheckin)
         const userCheckout: string = this.convertDateFormat(selectedCheckout)
 
@@ -18,15 +20,13 @@ class RoomService {
         const getBookedRoomsList: string[] = this.getBookedRooms(bookedRooms, userCheckin, userCheckout)
 
         const availableRoomsList: Room[] = this.getAvailableRoomsList(rooms, getBookedRoomsList)
-
-        console.log("availableRoomsList", availableRoomsList);
         
 
         return availableRoomsList;
     }
 
 
-    private async findAllBookings(): Promise<any> {
+    private async findAllBookings(): Promise<Booking[]> {
         const bookedRooms: Booking[] = await this.bookings.find();
         return bookedRooms;
     }
@@ -84,7 +84,7 @@ class RoomService {
 
         }
 
-        console.log("bookedRoomIds", bookedRoomIds);
+        
         
 
         return bookedRoomIds;
@@ -93,7 +93,7 @@ class RoomService {
     private getAvailableRoomsList(allRooms, bookedRooms: string[]): Room[] {
 
         let availableRooms = allRooms.filter
-            (room => !bookedRooms.filter(bookedRoom => bookedRoom === room.id).length);      
+            (room => !bookedRooms.filter(bookedRoom => bookedRoom.toString() === room._id.toString()));
         
         return availableRooms;
         

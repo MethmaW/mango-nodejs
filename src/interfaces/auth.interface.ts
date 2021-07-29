@@ -7,7 +7,6 @@ export interface DataStoredInToken {
 
 export interface TokenData {
   token: string;
-  expiresIn: number;
 }
 
 export interface RequestWithUser extends Request {

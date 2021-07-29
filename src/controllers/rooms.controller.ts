@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
 import { Room } from '@interfaces/rooms.interface';
-import roomService from '@services/rooms.service';
+import RoomService from '@services/rooms.service';
 
 class RoomsController {
-    public roomService = new roomService();
+    public roomService = new RoomService();
 
     public getRooms = async (req: Request, res: Response, next: NextFunction) => {
         const { selectedCheckin, selectedCheckout } = req.body

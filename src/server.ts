@@ -6,18 +6,18 @@ import validateEnv from '@utils/validateEnv';
 
 import AuthRoute from '@routes/auth.route';
 import IndexRoute from '@routes/index.route';
-import UsersRoute from '@routes/users.route';
 import RoomsRoute from './routes/rooms.route';
 import BookingsRoute from './routes/bookings.route';
+import PaymentsMethodsRoute from "./routes/payments.route"
 
 validateEnv();
 
 const app = new App([
     new AuthRoute(),
     new IndexRoute(),
-    new UsersRoute(),
     new RoomsRoute(),
     new BookingsRoute(),
+    new PaymentsMethodsRoute()
 ]);
 
 
