@@ -16,11 +16,11 @@ const bookingSchema: Schema = new Schema({
         required: true
     },
     checkin: {
-        type: Date,
+        type: String,
         required: true
     },
     checkout: {
-        type: Date,
+        type: String,
         required: true
     },
     bookedTime: {
