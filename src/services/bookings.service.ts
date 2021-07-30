@@ -14,11 +14,6 @@ class BookingService {
 
     public async createBooking(bookingData: Booking): Promise<Booking> {
 
-        console.log("bookingData", bookingData);
-        
-
-        
-        
         const createBookingData: Booking = await this.bookings.create(bookingData);
         const user: any = await this.users.findOne({ _id: bookingData.userId})
 
@@ -34,7 +29,7 @@ class BookingService {
             from: process.env.APP_EMAIL,
             to: user.email,
             subject: "[no-reply] Mango Holidays Booking Confirmation",
-            html: `<p>Hello,${user.firstName}</p>
+            html: `<p>Hello ${user.firstName},</p>
                 <p>Thank you for booking with us. Please find the booking details below. 
                 <p>Check in Date & Time: ${bookingData.checkin.slice(0, 15)}</p>
                 <p>Checkout Date & Time: ${bookingData.checkout.slice(0, 15)}</p>
